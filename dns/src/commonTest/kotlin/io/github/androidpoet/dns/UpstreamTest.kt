@@ -34,6 +34,9 @@ class UpstreamTest {
         assertFalse(isIpLiteral("fe80::1%en0"))
         assertFalse(isIpLiteral("::ffff:999.0.2.1"))
         assertFalse(isIpLiteral("01.1.1.1x"))
+        // Only ASCII digits: Char.isDigit would take these Arabic-Indic ones.
+        assertFalse(isIpLiteral("\u0661.\u0661.\u0661.\u0661"))
+        assertFalse(isIpLiteral("\u0661::1"))
     }
 
     @Test

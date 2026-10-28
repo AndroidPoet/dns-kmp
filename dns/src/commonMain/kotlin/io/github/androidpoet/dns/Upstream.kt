@@ -171,7 +171,7 @@ internal fun isIpLiteral(text: String): Boolean = isIpv4Literal(text) || isIpv6L
 
 private fun isIpv4Literal(text: String): Boolean {
     val parts = text.split('.')
-    return parts.size == 4 && parts.all { part -> part.length in 1..3 && part.all(Char::isDigit) && part.toInt() in 0..255 }
+    return parts.size == 4 && parts.all { part -> part.length in 1..3 && part.all { it in '0'..'9' } && part.toInt() in 0..255 }
 }
 
 private fun isIpv6Literal(text: String): Boolean {
@@ -188,7 +188,7 @@ private fun isIpv6Literal(text: String): Boolean {
         groups.removeAt(groups.lastIndex)
         groupCount += 2
     }
-    if (groups.any { group -> group.length !in 1..4 || !group.all { it.isDigit() || it.lowercaseChar() in 'a'..'f' } }) return false
+    if (groups.any { group -> group.length !in 1..4 || !group.all { it in '0'..'9' || it.lowercaseChar() in 'a'..'f' } }) return false
     groupCount += groups.size
     return if (compressed) groupCount < 8 else groupCount == 8
 }

@@ -226,7 +226,7 @@ fails with `Closed`.
 
 ### Targets and verification
 
-Live tests last run (0.1.0, 2026-10-28, all on the maintainer's machine):
+Live tests last run (0.1.0, 2026-10-28; Linux and Windows on GitHub runners, the rest on the maintainer's machine):
 
 | Platform | Suites | Result |
 |---|---|---|
@@ -234,11 +234,11 @@ Live tests last run (0.1.0, 2026-10-28, all on the maintainer's machine):
 | iOS simulator (iPhone 17, arm64) | `dns` 32 | pass |
 | macOS (Kotlin/Native arm64) | `dns` 32 | pass |
 | JVM (macOS arm64) | `dns` 32, `dns-okhttp` 3 | pass |
-| Linux x64 | pending | |
-| Windows x64 | pending | |
+| Linux x64 (GitHub runner: Kotlin/Native + JVM) | `dns` 32 native, `dns` 32 + `dns-okhttp` 3 JVM | pass ([run](https://github.com/AndroidPoet/dns-kmp/actions/runs/40718875012)) |
+| Windows x64 (GitHub runner: JVM + Kotlin/Native mingwX64) | `dns` 32 + `dns-okhttp` 3 JVM, `dns` 32 native | pass ([run](https://github.com/AndroidPoet/dns-kmp/actions/runs/40722649722)) |
 
 Linux and Windows run on GitHub's runners through the `Verify platforms`
-workflow; the first release links those runs here. The Rust core cross-compiles
+workflow (linked above). The Rust core cross-compiles
 for every target in the `Build` workflow's `apiCheck`.
 
 ## Maturity and provenance

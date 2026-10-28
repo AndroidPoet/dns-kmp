@@ -47,7 +47,11 @@ fun windowsImportLib(version: String) = "libwindows-import-$version.a"
 /** An archive with no members, which every linker accepts and ignores. */
 val emptyArchive = "!<arch>\n".toByteArray()
 
-/** `lib` directories the crate's build script registered, one per version cargo built. */
+/**
+ * The crate's `lib` directory per version cargo built for this target, read from the
+ * build script's `output` (stale build directories from earlier dependency sets may
+ * sit next to the live one, so only a directory that still holds an archive counts).
+ */
 fun builtWindowsImportLibDirs(release: File): Map<String, File> =
     release
         .resolve("build")
@@ -57,7 +61,9 @@ fun builtWindowsImportLibDirs(release: File): Map<String, File> =
         .flatten()
         .mapNotNull { line -> line.substringAfter("cargo:rustc-link-search=native=", "").ifEmpty { null } }
         .map(::File)
-        .associateBy { libDir -> libDir.parentFile.name.removePrefix("$windowsImportCrate-") }
+        .filter { libDir -> libDir.listFiles { file -> file.extension == "a" }?.isNotEmpty() == true }
+        .groupBy { libDir -> libDir.parentFile.name.removePrefix("$windowsImportCrate-") }
+        .mapValues { (_, libDirs) -> libDirs.first() }
 
 fun camel(triple: String) = triple.split('-', '_', '.').joinToString("") { it.replaceFirstChar(Char::uppercase) }
 
