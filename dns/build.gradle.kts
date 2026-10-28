@@ -27,16 +27,39 @@ val cargo = File(System.getProperty("user.home"), ".cargo/bin/cargo").takeIf { i
 val pruneRust = providers.gradleProperty("dns.rust.prune").map(String::toBoolean).getOrElse(false)
 val allJvmPlatforms = providers.gradleProperty("dns.jvm.allPlatforms").map(String::toBoolean).getOrElse(false)
 
-/** Import library the `windows` crate needs at link time; it ships inside the crate. */
-val windowsImportLib = "libwindows.0.52.0.a"
+/**
+ * The `windows` crate resolves Win32 calls through an import library shipped inside
+ * `windows_x86_64_gnullvm`, and the Kotlin/Native mingw link needs it next to
+ * libdnskmp.a. Cargo.lock lists every version any platform's dependency tree uses;
+ * which of them the Windows build really compiles is only known once cargo ran, so
+ * cinterop is told one archive per locked version and the build task fills each
+ * with the crate's library, or with an empty archive for a version it never built.
+ */
+val windowsImportCrate = "windows_x86_64_gnullvm"
+val windowsImportCrateVersions: List<String> =
+    Regex("name = \"$windowsImportCrate\"\r?\nversion = \"([^\"]+)\"")
+        .findAll(nativeDir.resolve("Cargo.lock").readText())
+        .map { it.groupValues[1] }
+        .toList()
+
+fun windowsImportLib(version: String) = "libwindows-import-$version.a"
+
+/** An archive with no members, which every linker accepts and ignores. */
+val emptyArchive = "!<arch>\n".toByteArray()
+
+/** `lib` directories the crate's build script registered, one per version cargo built. */
+fun builtWindowsImportLibDirs(release: File): Map<String, File> =
+    release
+        .resolve("build")
+        .listFiles { dir -> dir.name.startsWith("$windowsImportCrate-") }
+        .orEmpty()
+        .mapNotNull { dir -> dir.resolve("output").takeIf(File::exists)?.readLines() }
+        .flatten()
+        .mapNotNull { line -> line.substringAfter("cargo:rustc-link-search=native=", "").ifEmpty { null } }
+        .map(::File)
+        .associateBy { libDir -> libDir.parentFile.name.removePrefix("$windowsImportCrate-") }
 
 fun camel(triple: String) = triple.split('-', '_', '.').joinToString("") { it.replaceFirstChar(Char::uppercase) }
-
-fun cargoRegistryFile(path: String): File? =
-    File(System.getProperty("user.home"), ".cargo/registry/src")
-        .listFiles()
-        ?.map { it.resolve(path) }
-        ?.firstOrNull { it.exists() }
 
 val rustBuilds = mutableMapOf<String, TaskProvider<Exec>>()
 
@@ -70,9 +93,18 @@ fun rustBuild(triple: String): TaskProvider<Exec> =
                     .filter { it.exists() }
                     .forEach { it.copyTo(destination.resolve(it.name), overwrite = true) }
                 if ("windows" in triple) {
-                    val importLib = cargoRegistryFile("windows_x86_64_gnullvm-0.52.6/lib/$windowsImportLib")
-                    checkNotNull(importLib) { "$windowsImportLib not found in the cargo registry" }
-                    importLib.copyTo(destination.resolve(windowsImportLib), overwrite = true)
+                    val built = builtWindowsImportLibDirs(release)
+                    check(built.keys.all(windowsImportCrateVersions::contains)) { "$windowsImportCrate built at a version Cargo.lock does not list: ${built.keys}" }
+                    windowsImportCrateVersions.forEach { version ->
+                        val target = destination.resolve(windowsImportLib(version))
+                        val libDir = built[version]
+                        if (libDir == null) {
+                            target.writeBytes(emptyArchive)
+                        } else {
+                            val importLib = checkNotNull(libDir.listFiles { file -> file.extension == "a" }?.singleOrNull()) { "no import library in $libDir" }
+                            importLib.copyTo(target, overwrite = true)
+                        }
+                    }
                 }
                 if (pruneRust) nativeDir.resolve("target/$triple").deleteRecursively()
             }
@@ -220,10 +252,13 @@ kotlin {
                         .dir(triple)
                         .asFile.path,
                 )
-                if ("windows" in triple) extraOpts("-staticLibrary", windowsImportLib)
+                if ("windows" in triple) {
+                    windowsImportCrateVersions.forEach { extraOpts("-staticLibrary", windowsImportLib(it)) }
+                }
             }
-        // cinterop embeds the static library into the klib, so Rust must build first.
-        tasks.named(interop.interopProcessingTaskName) { dependsOn(rust) }
+        // cinterop embeds the static library into the klib, so Rust builds first and
+        // a changed library re-embeds (the task itself only tracks the def file).
+        tasks.named(interop.interopProcessingTaskName) { inputs.files(rust) }
     }
 
     sourceSets {
