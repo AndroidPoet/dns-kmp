@@ -1,0 +1,10 @@
+package = io.github.androidpoet.dns.cinterop
+headers = dnskmp.h
+headerFilter = dnskmp.h
+staticLibraries = libdnskmp.a
+# System libraries the Rust standard library and hickory's dependencies link against
+# (from `cargo rustc -- --print native-static-libs`).
+linkerOpts.osx = -liconv
+linkerOpts.ios = -liconv
+linkerOpts.linux = -lgcc_s -lutil -lrt -lpthread -lm -ldl -lc
+linkerOpts.mingw = -lntdll -ladvapi32 -lkernel32 -lsecur32 -lbcrypt -luserenv -lws2_32 -ldbghelp

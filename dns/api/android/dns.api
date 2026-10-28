@@ -1,0 +1,200 @@
+public final class io/github/androidpoet/dns/DnsAnswer {
+	public fun <init> (Ljava/util/List;Lio/github/androidpoet/dns/DnsSecurity;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getIpAddresses ()Ljava/util/List;
+	public final fun getRecords ()Ljava/util/List;
+	public final fun getSecurity ()Lio/github/androidpoet/dns/DnsSecurity;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/androidpoet/dns/DnsConfig {
+	public synthetic fun <init> (Ljava/util/List;ZJIILio/github/androidpoet/dns/IpFamily;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/util/List;ZJIILio/github/androidpoet/dns/IpFamily;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttempts ()I
+	public final fun getCacheSize ()I
+	public final fun getDnssec ()Z
+	public final fun getIpFamily ()Lio/github/androidpoet/dns/IpFamily;
+	public final fun getTimeout-UwyO8pc ()J
+	public final fun getUpstreams ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/androidpoet/dns/DnsErrorKind : java/lang/Enum {
+	public static final field Bogus Lio/github/androidpoet/dns/DnsErrorKind;
+	public static final field Closed Lio/github/androidpoet/dns/DnsErrorKind;
+	public static final field InvalidName Lio/github/androidpoet/dns/DnsErrorKind;
+	public static final field NoRecords Lio/github/androidpoet/dns/DnsErrorKind;
+	public static final field Other Lio/github/androidpoet/dns/DnsErrorKind;
+	public static final field Refused Lio/github/androidpoet/dns/DnsErrorKind;
+	public static final field ServerFailure Lio/github/androidpoet/dns/DnsErrorKind;
+	public static final field Timeout Lio/github/androidpoet/dns/DnsErrorKind;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/androidpoet/dns/DnsErrorKind;
+	public static fun values ()[Lio/github/androidpoet/dns/DnsErrorKind;
+}
+
+public final class io/github/androidpoet/dns/DnsException : java/lang/Exception {
+	public fun <init> (Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Lio/github/androidpoet/dns/DnsErrorKind;)V
+	public fun <init> (Ljava/lang/String;Lio/github/androidpoet/dns/DnsErrorKind;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lio/github/androidpoet/dns/DnsErrorKind;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getKind ()Lio/github/androidpoet/dns/DnsErrorKind;
+}
+
+public final class io/github/androidpoet/dns/DnsRecord {
+	public synthetic fun <init> (Ljava/lang/String;IJLjava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getData ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getTtl ()J
+	public final fun getType-wdh6uXQ ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/androidpoet/dns/DnsResolver : java/lang/AutoCloseable {
+	public static final field IP_LOOKUP I
+	public fun <init> ()V
+	public fun <init> (Lio/github/androidpoet/dns/DnsConfig;)V
+	public synthetic fun <init> (Lio/github/androidpoet/dns/DnsConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun clearCache ()V
+	public fun close ()V
+	public final fun getConfig ()Lio/github/androidpoet/dns/DnsConfig;
+	public final fun isClosed ()Z
+	public final fun lookup-RxA4Fu8 (Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun lookupIp (Ljava/lang/String;Lio/github/androidpoet/dns/IpFamily;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun lookupIp$default (Lio/github/androidpoet/dns/DnsResolver;Ljava/lang/String;Lio/github/androidpoet/dns/IpFamily;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/androidpoet/dns/DnsSecurity : java/lang/Enum {
+	public static final field Insecure Lio/github/androidpoet/dns/DnsSecurity;
+	public static final field Secure Lio/github/androidpoet/dns/DnsSecurity;
+	public static final field Unvalidated Lio/github/androidpoet/dns/DnsSecurity;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/androidpoet/dns/DnsSecurity;
+	public static fun values ()[Lio/github/androidpoet/dns/DnsSecurity;
+}
+
+public final class io/github/androidpoet/dns/IpFamily : java/lang/Enum {
+	public static final field Both Lio/github/androidpoet/dns/IpFamily;
+	public static final field Ipv4 Lio/github/androidpoet/dns/IpFamily;
+	public static final field Ipv6 Lio/github/androidpoet/dns/IpFamily;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/androidpoet/dns/IpFamily;
+	public static fun values ()[Lio/github/androidpoet/dns/IpFamily;
+}
+
+public final class io/github/androidpoet/dns/RecordType {
+	public static final field Companion Lio/github/androidpoet/dns/RecordType$Companion;
+	public static final synthetic fun box-impl (I)Lio/github/androidpoet/dns/RecordType;
+	public static fun constructor-impl (I)I
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (ILjava/lang/Object;)Z
+	public static final fun equals-impl0 (II)Z
+	public final fun getCode ()I
+	public fun hashCode ()I
+	public static fun hashCode-impl (I)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (I)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()I
+}
+
+public final class io/github/androidpoet/dns/RecordType$Companion {
+	public final fun getA-wdh6uXQ ()I
+	public final fun getAAAA-wdh6uXQ ()I
+	public final fun getCAA-wdh6uXQ ()I
+	public final fun getCNAME-wdh6uXQ ()I
+	public final fun getHTTPS-wdh6uXQ ()I
+	public final fun getMX-wdh6uXQ ()I
+	public final fun getNS-wdh6uXQ ()I
+	public final fun getPTR-wdh6uXQ ()I
+	public final fun getSOA-wdh6uXQ ()I
+	public final fun getSRV-wdh6uXQ ()I
+	public final fun getSVCB-wdh6uXQ ()I
+	public final fun getTXT-wdh6uXQ ()I
+}
+
+public abstract class io/github/androidpoet/dns/Upstream {
+	public static final field Companion Lio/github/androidpoet/dns/Upstream$Companion;
+	public static final field DEFAULT_PATH Ljava/lang/String;
+	public final fun equals (Ljava/lang/Object;)Z
+	public abstract fun getAddresses ()Ljava/util/List;
+	public abstract fun getPort ()I
+	public final fun hashCode ()I
+}
+
+public final class io/github/androidpoet/dns/Upstream$Companion {
+}
+
+public final class io/github/androidpoet/dns/Upstream$Http3 : io/github/androidpoet/dns/Upstream {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/lang/String;I)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/lang/String;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getAddresses ()Ljava/util/List;
+	public final fun getPath ()Ljava/lang/String;
+	public fun getPort ()I
+	public final fun getServerName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/androidpoet/dns/Upstream$Https : io/github/androidpoet/dns/Upstream {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/lang/String;I)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/lang/String;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getAddresses ()Ljava/util/List;
+	public final fun getPath ()Ljava/lang/String;
+	public fun getPort ()I
+	public final fun getServerName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/androidpoet/dns/Upstream$Plain : io/github/androidpoet/dns/Upstream {
+	public fun <init> (Ljava/util/List;I)V
+	public synthetic fun <init> (Ljava/util/List;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getAddresses ()Ljava/util/List;
+	public fun getPort ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/androidpoet/dns/Upstream$Quic : io/github/androidpoet/dns/Upstream {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;I)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getAddresses ()Ljava/util/List;
+	public fun getPort ()I
+	public final fun getServerName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/androidpoet/dns/Upstream$Tls : io/github/androidpoet/dns/Upstream {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;I)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getAddresses ()Ljava/util/List;
+	public fun getPort ()I
+	public final fun getServerName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/androidpoet/dns/Upstreams {
+	public static final field INSTANCE Lio/github/androidpoet/dns/Upstreams;
+	public final fun getAdGuard ()Lio/github/androidpoet/dns/Upstreams$Provider;
+	public final fun getAll ()Ljava/util/List;
+	public final fun getCloudflare ()Lio/github/androidpoet/dns/Upstreams$Provider;
+	public final fun getGoogle ()Lio/github/androidpoet/dns/Upstreams$Provider;
+	public final fun getMullvad ()Lio/github/androidpoet/dns/Upstreams$Provider;
+	public final fun getQuad9 ()Lio/github/androidpoet/dns/Upstreams$Provider;
+}
+
+public final class io/github/androidpoet/dns/Upstreams$Provider {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAddresses ()Ljava/util/List;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getPath ()Ljava/lang/String;
+	public final fun getServerName ()Ljava/lang/String;
+	public final fun https ()Lio/github/androidpoet/dns/Upstream$Https;
+	public final fun tls ()Lio/github/androidpoet/dns/Upstream$Tls;
+	public fun toString ()Ljava/lang/String;
+}
+

@@ -1,0 +1,275 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, linuxArm64, linuxX64, macosArm64, macosX64, mingwX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <dns-kmp:dns>
+final enum class io.github.androidpoet.dns/DnsErrorKind : kotlin/Enum<io.github.androidpoet.dns/DnsErrorKind> { // io.github.androidpoet.dns/DnsErrorKind|null[0]
+    enum entry Bogus // io.github.androidpoet.dns/DnsErrorKind.Bogus|null[0]
+    enum entry Closed // io.github.androidpoet.dns/DnsErrorKind.Closed|null[0]
+    enum entry InvalidName // io.github.androidpoet.dns/DnsErrorKind.InvalidName|null[0]
+    enum entry NoRecords // io.github.androidpoet.dns/DnsErrorKind.NoRecords|null[0]
+    enum entry Other // io.github.androidpoet.dns/DnsErrorKind.Other|null[0]
+    enum entry Refused // io.github.androidpoet.dns/DnsErrorKind.Refused|null[0]
+    enum entry ServerFailure // io.github.androidpoet.dns/DnsErrorKind.ServerFailure|null[0]
+    enum entry Timeout // io.github.androidpoet.dns/DnsErrorKind.Timeout|null[0]
+
+    final val entries // io.github.androidpoet.dns/DnsErrorKind.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.androidpoet.dns/DnsErrorKind> // io.github.androidpoet.dns/DnsErrorKind.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): io.github.androidpoet.dns/DnsErrorKind // io.github.androidpoet.dns/DnsErrorKind.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.github.androidpoet.dns/DnsErrorKind> // io.github.androidpoet.dns/DnsErrorKind.values|values#static(){}[0]
+}
+
+final enum class io.github.androidpoet.dns/DnsSecurity : kotlin/Enum<io.github.androidpoet.dns/DnsSecurity> { // io.github.androidpoet.dns/DnsSecurity|null[0]
+    enum entry Insecure // io.github.androidpoet.dns/DnsSecurity.Insecure|null[0]
+    enum entry Secure // io.github.androidpoet.dns/DnsSecurity.Secure|null[0]
+    enum entry Unvalidated // io.github.androidpoet.dns/DnsSecurity.Unvalidated|null[0]
+
+    final val entries // io.github.androidpoet.dns/DnsSecurity.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.androidpoet.dns/DnsSecurity> // io.github.androidpoet.dns/DnsSecurity.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): io.github.androidpoet.dns/DnsSecurity // io.github.androidpoet.dns/DnsSecurity.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.github.androidpoet.dns/DnsSecurity> // io.github.androidpoet.dns/DnsSecurity.values|values#static(){}[0]
+}
+
+final enum class io.github.androidpoet.dns/IpFamily : kotlin/Enum<io.github.androidpoet.dns/IpFamily> { // io.github.androidpoet.dns/IpFamily|null[0]
+    enum entry Both // io.github.androidpoet.dns/IpFamily.Both|null[0]
+    enum entry Ipv4 // io.github.androidpoet.dns/IpFamily.Ipv4|null[0]
+    enum entry Ipv6 // io.github.androidpoet.dns/IpFamily.Ipv6|null[0]
+
+    final val entries // io.github.androidpoet.dns/IpFamily.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.androidpoet.dns/IpFamily> // io.github.androidpoet.dns/IpFamily.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): io.github.androidpoet.dns/IpFamily // io.github.androidpoet.dns/IpFamily.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.github.androidpoet.dns/IpFamily> // io.github.androidpoet.dns/IpFamily.values|values#static(){}[0]
+}
+
+final class io.github.androidpoet.dns/DnsAnswer { // io.github.androidpoet.dns/DnsAnswer|null[0]
+    constructor <init>(kotlin.collections/List<io.github.androidpoet.dns/DnsRecord>, io.github.androidpoet.dns/DnsSecurity) // io.github.androidpoet.dns/DnsAnswer.<init>|<init>(kotlin.collections.List<io.github.androidpoet.dns.DnsRecord>;io.github.androidpoet.dns.DnsSecurity){}[0]
+
+    final val ipAddresses // io.github.androidpoet.dns/DnsAnswer.ipAddresses|{}ipAddresses[0]
+        final fun <get-ipAddresses>(): kotlin.collections/List<kotlin/String> // io.github.androidpoet.dns/DnsAnswer.ipAddresses.<get-ipAddresses>|<get-ipAddresses>(){}[0]
+    final val records // io.github.androidpoet.dns/DnsAnswer.records|{}records[0]
+        final fun <get-records>(): kotlin.collections/List<io.github.androidpoet.dns/DnsRecord> // io.github.androidpoet.dns/DnsAnswer.records.<get-records>|<get-records>(){}[0]
+    final val security // io.github.androidpoet.dns/DnsAnswer.security|{}security[0]
+        final fun <get-security>(): io.github.androidpoet.dns/DnsSecurity // io.github.androidpoet.dns/DnsAnswer.security.<get-security>|<get-security>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.androidpoet.dns/DnsAnswer.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.androidpoet.dns/DnsAnswer.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.androidpoet.dns/DnsAnswer.toString|toString(){}[0]
+}
+
+final class io.github.androidpoet.dns/DnsConfig { // io.github.androidpoet.dns/DnsConfig|null[0]
+    constructor <init>(kotlin.collections/List<io.github.androidpoet.dns/Upstream> = ..., kotlin/Boolean = ..., kotlin.time/Duration = ..., kotlin/Int = ..., kotlin/Int = ..., io.github.androidpoet.dns/IpFamily = ...) // io.github.androidpoet.dns/DnsConfig.<init>|<init>(kotlin.collections.List<io.github.androidpoet.dns.Upstream>;kotlin.Boolean;kotlin.time.Duration;kotlin.Int;kotlin.Int;io.github.androidpoet.dns.IpFamily){}[0]
+
+    final val attempts // io.github.androidpoet.dns/DnsConfig.attempts|{}attempts[0]
+        final fun <get-attempts>(): kotlin/Int // io.github.androidpoet.dns/DnsConfig.attempts.<get-attempts>|<get-attempts>(){}[0]
+    final val cacheSize // io.github.androidpoet.dns/DnsConfig.cacheSize|{}cacheSize[0]
+        final fun <get-cacheSize>(): kotlin/Int // io.github.androidpoet.dns/DnsConfig.cacheSize.<get-cacheSize>|<get-cacheSize>(){}[0]
+    final val dnssec // io.github.androidpoet.dns/DnsConfig.dnssec|{}dnssec[0]
+        final fun <get-dnssec>(): kotlin/Boolean // io.github.androidpoet.dns/DnsConfig.dnssec.<get-dnssec>|<get-dnssec>(){}[0]
+    final val ipFamily // io.github.androidpoet.dns/DnsConfig.ipFamily|{}ipFamily[0]
+        final fun <get-ipFamily>(): io.github.androidpoet.dns/IpFamily // io.github.androidpoet.dns/DnsConfig.ipFamily.<get-ipFamily>|<get-ipFamily>(){}[0]
+    final val timeout // io.github.androidpoet.dns/DnsConfig.timeout|{}timeout[0]
+        final fun <get-timeout>(): kotlin.time/Duration // io.github.androidpoet.dns/DnsConfig.timeout.<get-timeout>|<get-timeout>(){}[0]
+    final val upstreams // io.github.androidpoet.dns/DnsConfig.upstreams|{}upstreams[0]
+        final fun <get-upstreams>(): kotlin.collections/List<io.github.androidpoet.dns/Upstream> // io.github.androidpoet.dns/DnsConfig.upstreams.<get-upstreams>|<get-upstreams>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.androidpoet.dns/DnsConfig.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.androidpoet.dns/DnsConfig.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.androidpoet.dns/DnsConfig.toString|toString(){}[0]
+}
+
+final class io.github.androidpoet.dns/DnsException : kotlin/Exception { // io.github.androidpoet.dns/DnsException|null[0]
+    constructor <init>(kotlin/String, io.github.androidpoet.dns/DnsErrorKind = ..., kotlin/Throwable? = ...) // io.github.androidpoet.dns/DnsException.<init>|<init>(kotlin.String;io.github.androidpoet.dns.DnsErrorKind;kotlin.Throwable?){}[0]
+
+    final val kind // io.github.androidpoet.dns/DnsException.kind|{}kind[0]
+        final fun <get-kind>(): io.github.androidpoet.dns/DnsErrorKind // io.github.androidpoet.dns/DnsException.kind.<get-kind>|<get-kind>(){}[0]
+}
+
+final class io.github.androidpoet.dns/DnsRecord { // io.github.androidpoet.dns/DnsRecord|null[0]
+    constructor <init>(kotlin/String, io.github.androidpoet.dns/RecordType, kotlin/Long, kotlin/String) // io.github.androidpoet.dns/DnsRecord.<init>|<init>(kotlin.String;io.github.androidpoet.dns.RecordType;kotlin.Long;kotlin.String){}[0]
+
+    final val data // io.github.androidpoet.dns/DnsRecord.data|{}data[0]
+        final fun <get-data>(): kotlin/String // io.github.androidpoet.dns/DnsRecord.data.<get-data>|<get-data>(){}[0]
+    final val name // io.github.androidpoet.dns/DnsRecord.name|{}name[0]
+        final fun <get-name>(): kotlin/String // io.github.androidpoet.dns/DnsRecord.name.<get-name>|<get-name>(){}[0]
+    final val ttl // io.github.androidpoet.dns/DnsRecord.ttl|{}ttl[0]
+        final fun <get-ttl>(): kotlin/Long // io.github.androidpoet.dns/DnsRecord.ttl.<get-ttl>|<get-ttl>(){}[0]
+    final val type // io.github.androidpoet.dns/DnsRecord.type|{}type[0]
+        final fun <get-type>(): io.github.androidpoet.dns/RecordType // io.github.androidpoet.dns/DnsRecord.type.<get-type>|<get-type>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.androidpoet.dns/DnsRecord.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.androidpoet.dns/DnsRecord.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.androidpoet.dns/DnsRecord.toString|toString(){}[0]
+}
+
+final class io.github.androidpoet.dns/DnsResolver : kotlin/AutoCloseable { // io.github.androidpoet.dns/DnsResolver|null[0]
+    constructor <init>(io.github.androidpoet.dns/DnsConfig = ...) // io.github.androidpoet.dns/DnsResolver.<init>|<init>(io.github.androidpoet.dns.DnsConfig){}[0]
+
+    final val config // io.github.androidpoet.dns/DnsResolver.config|{}config[0]
+        final fun <get-config>(): io.github.androidpoet.dns/DnsConfig // io.github.androidpoet.dns/DnsResolver.config.<get-config>|<get-config>(){}[0]
+    final val isClosed // io.github.androidpoet.dns/DnsResolver.isClosed|{}isClosed[0]
+        final fun <get-isClosed>(): kotlin/Boolean // io.github.androidpoet.dns/DnsResolver.isClosed.<get-isClosed>|<get-isClosed>(){}[0]
+
+    final fun clearCache() // io.github.androidpoet.dns/DnsResolver.clearCache|clearCache(){}[0]
+    final fun close() // io.github.androidpoet.dns/DnsResolver.close|close(){}[0]
+    final fun toString(): kotlin/String // io.github.androidpoet.dns/DnsResolver.toString|toString(){}[0]
+    final suspend fun lookup(kotlin/String, io.github.androidpoet.dns/RecordType): io.github.androidpoet.dns/DnsAnswer // io.github.androidpoet.dns/DnsResolver.lookup|lookup(kotlin.String;io.github.androidpoet.dns.RecordType){}[0]
+    final suspend fun lookupIp(kotlin/String, io.github.androidpoet.dns/IpFamily = ...): kotlin.collections/List<kotlin/String> // io.github.androidpoet.dns/DnsResolver.lookupIp|lookupIp(kotlin.String;io.github.androidpoet.dns.IpFamily){}[0]
+}
+
+final value class io.github.androidpoet.dns/RecordType { // io.github.androidpoet.dns/RecordType|null[0]
+    constructor <init>(kotlin/Int) // io.github.androidpoet.dns/RecordType.<init>|<init>(kotlin.Int){}[0]
+
+    final val code // io.github.androidpoet.dns/RecordType.code|{}code[0]
+        final fun <get-code>(): kotlin/Int // io.github.androidpoet.dns/RecordType.code.<get-code>|<get-code>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.androidpoet.dns/RecordType.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.androidpoet.dns/RecordType.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.androidpoet.dns/RecordType.toString|toString(){}[0]
+
+    final object Companion { // io.github.androidpoet.dns/RecordType.Companion|null[0]
+        final val A // io.github.androidpoet.dns/RecordType.Companion.A|{}A[0]
+            final fun <get-A>(): io.github.androidpoet.dns/RecordType // io.github.androidpoet.dns/RecordType.Companion.A.<get-A>|<get-A>(){}[0]
+        final val AAAA // io.github.androidpoet.dns/RecordType.Companion.AAAA|{}AAAA[0]
+            final fun <get-AAAA>(): io.github.androidpoet.dns/RecordType // io.github.androidpoet.dns/RecordType.Companion.AAAA.<get-AAAA>|<get-AAAA>(){}[0]
+        final val CAA // io.github.androidpoet.dns/RecordType.Companion.CAA|{}CAA[0]
+            final fun <get-CAA>(): io.github.androidpoet.dns/RecordType // io.github.androidpoet.dns/RecordType.Companion.CAA.<get-CAA>|<get-CAA>(){}[0]
+        final val CNAME // io.github.androidpoet.dns/RecordType.Companion.CNAME|{}CNAME[0]
+            final fun <get-CNAME>(): io.github.androidpoet.dns/RecordType // io.github.androidpoet.dns/RecordType.Companion.CNAME.<get-CNAME>|<get-CNAME>(){}[0]
+        final val HTTPS // io.github.androidpoet.dns/RecordType.Companion.HTTPS|{}HTTPS[0]
+            final fun <get-HTTPS>(): io.github.androidpoet.dns/RecordType // io.github.androidpoet.dns/RecordType.Companion.HTTPS.<get-HTTPS>|<get-HTTPS>(){}[0]
+        final val MX // io.github.androidpoet.dns/RecordType.Companion.MX|{}MX[0]
+            final fun <get-MX>(): io.github.androidpoet.dns/RecordType // io.github.androidpoet.dns/RecordType.Companion.MX.<get-MX>|<get-MX>(){}[0]
+        final val NS // io.github.androidpoet.dns/RecordType.Companion.NS|{}NS[0]
+            final fun <get-NS>(): io.github.androidpoet.dns/RecordType // io.github.androidpoet.dns/RecordType.Companion.NS.<get-NS>|<get-NS>(){}[0]
+        final val PTR // io.github.androidpoet.dns/RecordType.Companion.PTR|{}PTR[0]
+            final fun <get-PTR>(): io.github.androidpoet.dns/RecordType // io.github.androidpoet.dns/RecordType.Companion.PTR.<get-PTR>|<get-PTR>(){}[0]
+        final val SOA // io.github.androidpoet.dns/RecordType.Companion.SOA|{}SOA[0]
+            final fun <get-SOA>(): io.github.androidpoet.dns/RecordType // io.github.androidpoet.dns/RecordType.Companion.SOA.<get-SOA>|<get-SOA>(){}[0]
+        final val SRV // io.github.androidpoet.dns/RecordType.Companion.SRV|{}SRV[0]
+            final fun <get-SRV>(): io.github.androidpoet.dns/RecordType // io.github.androidpoet.dns/RecordType.Companion.SRV.<get-SRV>|<get-SRV>(){}[0]
+        final val SVCB // io.github.androidpoet.dns/RecordType.Companion.SVCB|{}SVCB[0]
+            final fun <get-SVCB>(): io.github.androidpoet.dns/RecordType // io.github.androidpoet.dns/RecordType.Companion.SVCB.<get-SVCB>|<get-SVCB>(){}[0]
+        final val TXT // io.github.androidpoet.dns/RecordType.Companion.TXT|{}TXT[0]
+            final fun <get-TXT>(): io.github.androidpoet.dns/RecordType // io.github.androidpoet.dns/RecordType.Companion.TXT.<get-TXT>|<get-TXT>(){}[0]
+    }
+}
+
+sealed class io.github.androidpoet.dns/Upstream { // io.github.androidpoet.dns/Upstream|null[0]
+    abstract val addresses // io.github.androidpoet.dns/Upstream.addresses|{}addresses[0]
+        abstract fun <get-addresses>(): kotlin.collections/List<kotlin/String> // io.github.androidpoet.dns/Upstream.addresses.<get-addresses>|<get-addresses>(){}[0]
+    abstract val port // io.github.androidpoet.dns/Upstream.port|{}port[0]
+        abstract fun <get-port>(): kotlin/Int // io.github.androidpoet.dns/Upstream.port.<get-port>|<get-port>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.androidpoet.dns/Upstream.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.androidpoet.dns/Upstream.hashCode|hashCode(){}[0]
+
+    final class Http3 : io.github.androidpoet.dns/Upstream { // io.github.androidpoet.dns/Upstream.Http3|null[0]
+        constructor <init>(kotlin/String, kotlin.collections/List<kotlin/String>, kotlin/String = ..., kotlin/Int = ...) // io.github.androidpoet.dns/Upstream.Http3.<init>|<init>(kotlin.String;kotlin.collections.List<kotlin.String>;kotlin.String;kotlin.Int){}[0]
+
+        final val addresses // io.github.androidpoet.dns/Upstream.Http3.addresses|{}addresses[0]
+            final fun <get-addresses>(): kotlin.collections/List<kotlin/String> // io.github.androidpoet.dns/Upstream.Http3.addresses.<get-addresses>|<get-addresses>(){}[0]
+        final val path // io.github.androidpoet.dns/Upstream.Http3.path|{}path[0]
+            final fun <get-path>(): kotlin/String // io.github.androidpoet.dns/Upstream.Http3.path.<get-path>|<get-path>(){}[0]
+        final val port // io.github.androidpoet.dns/Upstream.Http3.port|{}port[0]
+            final fun <get-port>(): kotlin/Int // io.github.androidpoet.dns/Upstream.Http3.port.<get-port>|<get-port>(){}[0]
+        final val serverName // io.github.androidpoet.dns/Upstream.Http3.serverName|{}serverName[0]
+            final fun <get-serverName>(): kotlin/String // io.github.androidpoet.dns/Upstream.Http3.serverName.<get-serverName>|<get-serverName>(){}[0]
+
+        final fun toString(): kotlin/String // io.github.androidpoet.dns/Upstream.Http3.toString|toString(){}[0]
+    }
+
+    final class Https : io.github.androidpoet.dns/Upstream { // io.github.androidpoet.dns/Upstream.Https|null[0]
+        constructor <init>(kotlin/String, kotlin.collections/List<kotlin/String>, kotlin/String = ..., kotlin/Int = ...) // io.github.androidpoet.dns/Upstream.Https.<init>|<init>(kotlin.String;kotlin.collections.List<kotlin.String>;kotlin.String;kotlin.Int){}[0]
+
+        final val addresses // io.github.androidpoet.dns/Upstream.Https.addresses|{}addresses[0]
+            final fun <get-addresses>(): kotlin.collections/List<kotlin/String> // io.github.androidpoet.dns/Upstream.Https.addresses.<get-addresses>|<get-addresses>(){}[0]
+        final val path // io.github.androidpoet.dns/Upstream.Https.path|{}path[0]
+            final fun <get-path>(): kotlin/String // io.github.androidpoet.dns/Upstream.Https.path.<get-path>|<get-path>(){}[0]
+        final val port // io.github.androidpoet.dns/Upstream.Https.port|{}port[0]
+            final fun <get-port>(): kotlin/Int // io.github.androidpoet.dns/Upstream.Https.port.<get-port>|<get-port>(){}[0]
+        final val serverName // io.github.androidpoet.dns/Upstream.Https.serverName|{}serverName[0]
+            final fun <get-serverName>(): kotlin/String // io.github.androidpoet.dns/Upstream.Https.serverName.<get-serverName>|<get-serverName>(){}[0]
+
+        final fun toString(): kotlin/String // io.github.androidpoet.dns/Upstream.Https.toString|toString(){}[0]
+    }
+
+    final class Plain : io.github.androidpoet.dns/Upstream { // io.github.androidpoet.dns/Upstream.Plain|null[0]
+        constructor <init>(kotlin.collections/List<kotlin/String>, kotlin/Int = ...) // io.github.androidpoet.dns/Upstream.Plain.<init>|<init>(kotlin.collections.List<kotlin.String>;kotlin.Int){}[0]
+
+        final val addresses // io.github.androidpoet.dns/Upstream.Plain.addresses|{}addresses[0]
+            final fun <get-addresses>(): kotlin.collections/List<kotlin/String> // io.github.androidpoet.dns/Upstream.Plain.addresses.<get-addresses>|<get-addresses>(){}[0]
+        final val port // io.github.androidpoet.dns/Upstream.Plain.port|{}port[0]
+            final fun <get-port>(): kotlin/Int // io.github.androidpoet.dns/Upstream.Plain.port.<get-port>|<get-port>(){}[0]
+
+        final fun toString(): kotlin/String // io.github.androidpoet.dns/Upstream.Plain.toString|toString(){}[0]
+    }
+
+    final class Quic : io.github.androidpoet.dns/Upstream { // io.github.androidpoet.dns/Upstream.Quic|null[0]
+        constructor <init>(kotlin/String, kotlin.collections/List<kotlin/String>, kotlin/Int = ...) // io.github.androidpoet.dns/Upstream.Quic.<init>|<init>(kotlin.String;kotlin.collections.List<kotlin.String>;kotlin.Int){}[0]
+
+        final val addresses // io.github.androidpoet.dns/Upstream.Quic.addresses|{}addresses[0]
+            final fun <get-addresses>(): kotlin.collections/List<kotlin/String> // io.github.androidpoet.dns/Upstream.Quic.addresses.<get-addresses>|<get-addresses>(){}[0]
+        final val port // io.github.androidpoet.dns/Upstream.Quic.port|{}port[0]
+            final fun <get-port>(): kotlin/Int // io.github.androidpoet.dns/Upstream.Quic.port.<get-port>|<get-port>(){}[0]
+        final val serverName // io.github.androidpoet.dns/Upstream.Quic.serverName|{}serverName[0]
+            final fun <get-serverName>(): kotlin/String // io.github.androidpoet.dns/Upstream.Quic.serverName.<get-serverName>|<get-serverName>(){}[0]
+
+        final fun toString(): kotlin/String // io.github.androidpoet.dns/Upstream.Quic.toString|toString(){}[0]
+    }
+
+    final class Tls : io.github.androidpoet.dns/Upstream { // io.github.androidpoet.dns/Upstream.Tls|null[0]
+        constructor <init>(kotlin/String, kotlin.collections/List<kotlin/String>, kotlin/Int = ...) // io.github.androidpoet.dns/Upstream.Tls.<init>|<init>(kotlin.String;kotlin.collections.List<kotlin.String>;kotlin.Int){}[0]
+
+        final val addresses // io.github.androidpoet.dns/Upstream.Tls.addresses|{}addresses[0]
+            final fun <get-addresses>(): kotlin.collections/List<kotlin/String> // io.github.androidpoet.dns/Upstream.Tls.addresses.<get-addresses>|<get-addresses>(){}[0]
+        final val port // io.github.androidpoet.dns/Upstream.Tls.port|{}port[0]
+            final fun <get-port>(): kotlin/Int // io.github.androidpoet.dns/Upstream.Tls.port.<get-port>|<get-port>(){}[0]
+        final val serverName // io.github.androidpoet.dns/Upstream.Tls.serverName|{}serverName[0]
+            final fun <get-serverName>(): kotlin/String // io.github.androidpoet.dns/Upstream.Tls.serverName.<get-serverName>|<get-serverName>(){}[0]
+
+        final fun toString(): kotlin/String // io.github.androidpoet.dns/Upstream.Tls.toString|toString(){}[0]
+    }
+
+    final object Companion { // io.github.androidpoet.dns/Upstream.Companion|null[0]
+        final const val DEFAULT_PATH // io.github.androidpoet.dns/Upstream.Companion.DEFAULT_PATH|{}DEFAULT_PATH[0]
+            final fun <get-DEFAULT_PATH>(): kotlin/String // io.github.androidpoet.dns/Upstream.Companion.DEFAULT_PATH.<get-DEFAULT_PATH>|<get-DEFAULT_PATH>(){}[0]
+    }
+}
+
+final object io.github.androidpoet.dns/Upstreams { // io.github.androidpoet.dns/Upstreams|null[0]
+    final val AdGuard // io.github.androidpoet.dns/Upstreams.AdGuard|{}AdGuard[0]
+        final fun <get-AdGuard>(): io.github.androidpoet.dns/Upstreams.Provider // io.github.androidpoet.dns/Upstreams.AdGuard.<get-AdGuard>|<get-AdGuard>(){}[0]
+    final val Cloudflare // io.github.androidpoet.dns/Upstreams.Cloudflare|{}Cloudflare[0]
+        final fun <get-Cloudflare>(): io.github.androidpoet.dns/Upstreams.Provider // io.github.androidpoet.dns/Upstreams.Cloudflare.<get-Cloudflare>|<get-Cloudflare>(){}[0]
+    final val Google // io.github.androidpoet.dns/Upstreams.Google|{}Google[0]
+        final fun <get-Google>(): io.github.androidpoet.dns/Upstreams.Provider // io.github.androidpoet.dns/Upstreams.Google.<get-Google>|<get-Google>(){}[0]
+    final val Mullvad // io.github.androidpoet.dns/Upstreams.Mullvad|{}Mullvad[0]
+        final fun <get-Mullvad>(): io.github.androidpoet.dns/Upstreams.Provider // io.github.androidpoet.dns/Upstreams.Mullvad.<get-Mullvad>|<get-Mullvad>(){}[0]
+    final val Quad9 // io.github.androidpoet.dns/Upstreams.Quad9|{}Quad9[0]
+        final fun <get-Quad9>(): io.github.androidpoet.dns/Upstreams.Provider // io.github.androidpoet.dns/Upstreams.Quad9.<get-Quad9>|<get-Quad9>(){}[0]
+    final val all // io.github.androidpoet.dns/Upstreams.all|{}all[0]
+        final fun <get-all>(): kotlin.collections/List<io.github.androidpoet.dns/Upstreams.Provider> // io.github.androidpoet.dns/Upstreams.all.<get-all>|<get-all>(){}[0]
+
+    final class Provider { // io.github.androidpoet.dns/Upstreams.Provider|null[0]
+        constructor <init>(kotlin/String, kotlin/String, kotlin.collections/List<kotlin/String>, kotlin/String = ...) // io.github.androidpoet.dns/Upstreams.Provider.<init>|<init>(kotlin.String;kotlin.String;kotlin.collections.List<kotlin.String>;kotlin.String){}[0]
+
+        final val addresses // io.github.androidpoet.dns/Upstreams.Provider.addresses|{}addresses[0]
+            final fun <get-addresses>(): kotlin.collections/List<kotlin/String> // io.github.androidpoet.dns/Upstreams.Provider.addresses.<get-addresses>|<get-addresses>(){}[0]
+        final val name // io.github.androidpoet.dns/Upstreams.Provider.name|{}name[0]
+            final fun <get-name>(): kotlin/String // io.github.androidpoet.dns/Upstreams.Provider.name.<get-name>|<get-name>(){}[0]
+        final val path // io.github.androidpoet.dns/Upstreams.Provider.path|{}path[0]
+            final fun <get-path>(): kotlin/String // io.github.androidpoet.dns/Upstreams.Provider.path.<get-path>|<get-path>(){}[0]
+        final val serverName // io.github.androidpoet.dns/Upstreams.Provider.serverName|{}serverName[0]
+            final fun <get-serverName>(): kotlin/String // io.github.androidpoet.dns/Upstreams.Provider.serverName.<get-serverName>|<get-serverName>(){}[0]
+
+        final fun https(): io.github.androidpoet.dns/Upstream.Https // io.github.androidpoet.dns/Upstreams.Provider.https|https(){}[0]
+        final fun tls(): io.github.androidpoet.dns/Upstream.Tls // io.github.androidpoet.dns/Upstreams.Provider.tls|tls(){}[0]
+        final fun toString(): kotlin/String // io.github.androidpoet.dns/Upstreams.Provider.toString|toString(){}[0]
+    }
+}

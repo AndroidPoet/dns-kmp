@@ -1,0 +1,40 @@
+[package]
+name = "dnskmp"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+publish = false
+
+[lib]
+# No "rlib": with it in the list, LTO does not apply to the staticlib.
+crate-type = ["staticlib", "cdylib"]
+
+[dependencies]
+# No default features: `system-config` would pull in the OS resolver settings
+# (and JNI/ndk-context on Android); this library only ever talks to the
+# upstreams the app configured.
+hickory-resolver = { version = "=0.26.3", default-features = false, features = [
+    "tokio", "tls-ring", "https-ring", "quic-ring", "h3-ring", "dnssec-ring", "webpki-roots",
+] }
+tokio = { version = "1", features = ["rt-multi-thread", "sync", "time", "macros"] }
+jni = { version = "0.21", optional = true }
+# Exactly one rustls crypto provider; ring cross-compiles without cmake.
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+# Upstream settings arrive from Kotlin as one JSON document.
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# Opt-in diagnostics: DNSKMP_LOG=<level> prints hickory's tracing output to stderr.
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", default-features = false, features = ["fmt", "std"] }
+
+[features]
+# JNI exports for the JVM and Android builds; Kotlin/Native calls the C ABI directly.
+jni = ["dep:jni"]
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+# Apple targets strip at link time instead (.cargo/config.toml).
+strip = false
+panic = "abort"
